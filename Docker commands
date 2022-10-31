@@ -1,0 +1,38 @@
+what we are doing in docker ??
+
+--> first we are pulling an image from docker hub by using command 
+--> after that we are creating a container based on that image 
+--> we are running the container on a specific port
+--> after that we are trying to create our own image for this we are writing a demo HTML file (saving it in the form of "index.html") and we are writing a Docker file
+    (saving it in the form of "Dockerfile") 
+--> we are building the image by using the build command, after that we are running one more container with the custom image on a different port    
+
+########################################################################################################################################################################
+                                ############################## COMMANDS TO EXECUTE A DOCKER CONTAINER ##############################
+## to pull an image from docker hub
+sudo docker pull (image name)
+
+## to list the images available
+sudo docker image ls
+
+## to list all docker images running + stopped (-a stands for all)
+sudo docker image ls -a
+
+## to run a container in attached mode form docker image (it runs the container in attached mode, logs will be displayed in terminal, if you close the termonal 
+## the container will also stop working) (-p indicates port, -d indicates detached mode)
+sudo docker run --name (the name which you want to give) -p 80:80 (image name)
+
+## to run the container in detached mode (no logs will be displayed in the terminal) (-p indicates port, -d indicates detached mode)
+sudo docker run --name (the name of your choice) -p 80:80 -d (image name)
+
+## to get the list of containers
+sudo docker container ls
+
+## to get the list of containers running + stopped (-a stands for all)
+sudo docker container ls -a
+
+## to make the container executable (-it stands for interactive terminal) (instead of bash you can use any kind of termonal which you want to execute ex:- pwsh(powershell))
+sudo docker container exec -it (id of the container) bash
+
+## to build a custom image (create a docker file before executing this command)
+sudo docker build -t (name of your choice) .
