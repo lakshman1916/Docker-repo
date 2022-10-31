@@ -1,0 +1,20 @@
+## Declaring the base image
+FROM mcr.microsoft.com/dotnet/core/sdk:31
+## Going into the working directory of the base image
+WORKDIR /app
+##Copy all the content
+COPY . .
+##Exposing the port
+ENV ASPNETCORE_URLS http://*:80
+EXPOSE 80
+# Entry point declaration
+ENTRYPOINT["dotnet","demodockerapp.dll"]
+
+## Note the following
+## entry point should be specified in this place
+## sudo docker build -t dotnetapp .
+## sudo docker run -p 80:80 -d dotnetapp
+
+### COMMAND ###
+
+## sudo docker build -t dockerapplication .
