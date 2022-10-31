@@ -36,3 +36,14 @@ sudo docker container exec -it (id of the container) bash
 
 ## to build a custom image (create a docker file before executing this command)
 sudo docker build -t (name of your choice) .
+
+## to stop continer 
+sudo docker container stop (name of the container)
+
+## to remove a container
+sudo docker container rm (container name)
+
+## to remove an image
+sudo docker image ls (image id)
+
+
