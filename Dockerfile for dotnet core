@@ -8,7 +8,7 @@ COPY . .
 ENV ASPNETCORE_URLS http://*:80
 EXPOSE 80
 # Entry point declaration
-ENTRYPOINT["dotnet","demodockerapp.dll"]
+ENTRYPOINT ["dotnet","demodockerapp.dll"]
 
 ## Note the following
 ## entry point should be specified in this place
