@@ -1,5 +1,5 @@
 ## Declaring the base image
-FROM mcr.microsoft.com/dotnet/core/sdk:31
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 ## Going into the working directory of the base image
 WORKDIR /app
 ##Copy all the content
