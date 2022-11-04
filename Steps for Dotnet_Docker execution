@@ -1,0 +1,5 @@
+## Steps to follow
+
+--> Create a demo asp.net webapp using Visual Studio 2019.Save it in Local system
+--> Write a Docker file to execute the Image (search for asp.net dockerfile in google)
+--> Store the Docker file in the same location where the .dll file is saved (i.e Publish folder)
