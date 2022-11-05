@@ -45,3 +45,62 @@ sudo docker container rm <container name>
 
 ## to remove an image
 sudo docker image ls <image id>
+
+
+######################################################################
+## Steps to follow to create a dotnet image 
+
+--> Create a demo asp.net webapp using Visual Studio 2019.Save it in Local system
+--> Write a Docker file to execute the Image (search for asp.net dockerfile in google)
+--> Store the Docker file in the same location where the .dll file is saved (i.e Publish folder)
+--> Transfer the publish folder into the VM by using WinSCP (File Transfer Protocol)
+--> Build the code using command
+        sudo docker build -t <name of your choice> .
+--> Image will be created then make a container out of that image by using command
+        sudo docker run --name <name of your choice> -p 80:80 -d <image name>
+
+## Docker file for dotnetcore
+
+## Declaring the base image
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
+## Going into the working directory of the base image
+WORKDIR /app
+##Copy all the content
+COPY . .
+##Exposing the port
+ENV ASPNETCORE_URLS http://*:80
+EXPOSE 80
+# Entry point declaration
+ENTRYPOINT ["dotnet","demodockerapp.dll"]
+
+## Note the following
+## entry point should be specified in this place
+## sudo docker build -t dotnetapp .
+## sudo docker run -p 80:80 -d dotnetapp
+
+### COMMAND ###
+
+## sudo docker build -t dockerapplication .
+
+#######################################################################################
+
+## usage of ACR (Azure Container Registry)
+
+--> To use ACR we need to install Azure CLI (Check for Azure CLI installation commands in google)
+--> After that we have to login to our azure portal by using 
+        sudo az login 
+--> By executing the above command it will show some link and code go through them and login
+--> After logging into Azure portal we have to login into ACR aswell 
+        sudo az acr login <name of the repository>
+--> To push the image into ACR we have to rename the image as (the repository URL/image name)
+        ex :- sudo docker tag <image name which you want to push>:tag <repository URL which you want to push>/<image name>:tag
+--> After successfully tagging your image you can perform push operation to push the image into ACR
+        sudo docker push <recently tagged image name>
+--> Advantage by pushing this image into ACR is we can store the image in a secure & shared location
+
+## Executing the image using webapp
+
+--> While creating webapp you have to select docker container
+--> After that go into Docker page and select the image which you want to run 
+--> Above are the simple steps to execute the image by using the webapp
+
