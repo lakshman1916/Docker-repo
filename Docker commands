@@ -44,7 +44,7 @@ sudo docker container stop <name of the container>
 sudo docker container rm <container name>
 
 ## to remove an image
-sudo docker image ls <image id>
+sudo docker image rm <image id>
 
 
 ######################################################################
